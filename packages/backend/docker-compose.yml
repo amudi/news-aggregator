@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ../..
+      dockerfile: packages/backend/Dockerfile
+      target: builder
+    ports:
+      - '3001:3001'
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://user:password@db:5432/news_db
+    depends_on:
+      - db
+    volumes:
+      - ../../packages/backend:/app/packages/backend
+      - backend_node_modules:/app/packages/backend/node_modules
+      - root_node_modules:/app/node_modules
+
+  db:
+    image: postgres:15
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=news_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  backend_node_modules:
+  root_node_modules:

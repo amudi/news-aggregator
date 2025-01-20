@@ -1,0 +1,42 @@
+{
+  "name": "news-aggregator",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "scripts": {
+    "backend:dev": "pnpm --filter @news-aggregator/backend dev",
+    "backend:build": "pnpm --filter @news-aggregator/backend build",
+    "backend:start": "pnpm --filter @news-aggregator/backend start",
+    "frontend:dev": "pnpm --filter @news-aggregator/frontend dev",
+    "frontend:build": "pnpm --filter @news-aggregator/frontend build",
+    "frontend:start": "pnpm --filter @news-aggregator/frontend start",
+    "lint": "eslint \"**/*.{js,ts}\"",
+    "format": "prettier --write \"**/*.{js,ts,json,md}\"",
+    "build": "pnpm -r --parallel build",
+    "clean": "pnpm -r --parallel clean",
+    "type-check": "pnpm -r --parallel type-check",
+    "test": "pnpm -r --parallel test"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.14",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "@typescript-eslint/utils": "^6.x",
+    "eslint": "^8.x",
+    "eslint-config-prettier": "^9.x",
+    "eslint-plugin-prettier": "^5.x",
+    "lint-staged": "^15.x",
+    "prettier": "^3.x",
+    "ts-node": "^10.9.2",
+    "typescript": "5.7.3"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
