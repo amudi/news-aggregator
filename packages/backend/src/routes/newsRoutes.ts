@@ -9,7 +9,7 @@ import {
 import { newsRateLimiter } from '../middleware/rateLimiter';
 import { NewsRefreshController } from '../controllers/newsRefreshController';
 
-const router = Router();
+const router: Router = Router();
 
 // Let's assume POST to /news is only called by authorized clients, and we don't
 // need to rate limit it
