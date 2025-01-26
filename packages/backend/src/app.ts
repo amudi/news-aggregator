@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { PrismaClient } from '@prisma/client';
@@ -12,7 +12,7 @@ import { sanitizeRequest } from './middleware/sanitizer';
 dotenv.config();
 
 // Initialize Express app
-const app = express();
+const app: Express = express();
 
 // Initialize Prisma client
 export const prisma = new PrismaClient();
@@ -47,8 +47,8 @@ process.on('SIGTERM', async () => {
   process.exit(0);
 });
 
-export const createApp = () => {
-  const app = express();
+export const createApp = (): Express => {
+  const app: Express = express();
 
   // Middleware
   app.use(helmet());
